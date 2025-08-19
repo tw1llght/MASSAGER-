@@ -1,0 +1,293 @@
+/* ===== СБРОС СТИЛЕЙ ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+/* ===== МОДАЛКА (вход/регистрация) ===== */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;       /* Центр по вертикали */
+  justify-content: center;   /* Центр по горизонтали */
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 320px;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* ===== ВКЛАДКИ (переключение вход/регистрация) ===== */
+.tab-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.tab-buttons button {
+  flex: 1;
+  padding: 10px;
+  background: #eee;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab-buttons button.active {
+  background: #3498db;
+  color: white;
+}
+
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
+
+/* ===== ОСНОВНОЙ ИНТЕРФЕЙС ===== */
+.app-container {
+  display: flex;
+  height: 100%;
+}
+
+/* ===== САЙДБАР ===== */
+.sidebar {
+  width: 70px;
+  background: #ffffff;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.top-bar {
+  padding: 10px;
+  text-align: center;
+}
+
+.search-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.chat-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  overflow-y: auto;
+}
+
+/* ===== АВАТАРКИ ЧАТОВ ===== */
+.chat-avatar {
+  width: 40px;
+  height: 40px;
+  background: #3498db;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.chat-avatar:hover {
+  background: #2980b9;
+}
+
+/* ===== ОКНО ЧАТА ===== */
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8;
+}
+
+/* ===== ХЭДЕР ЧАТА ===== */
+.chat-header {
+  padding: 12px 16px;
+  background: #3498db;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+
+.chat-active .back-button {
+  display: inline;
+}
+
+/* ===== СООБЩЕНИЯ ===== */
+.messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background-image: url('https://web.telegram.org/img/pattern.png');
+  background-size: 500px;
+}
+
+.message {
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-radius: 16px;
+  max-width: 75%;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.message.sent {
+  background: #dcf8c6;
+  align-self: flex-end;
+  margin-left: auto;
+  border-top-right-radius: 0;
+}
+
+.message.received {
+  background: #ffffff;
+  align-self: flex-start;
+  margin-right: auto;
+  border-top-left-radius: 0;
+}
+
+/* ===== ПОЛЕ ВВОДА ===== */
+.input-area {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background: #f5f5f5;
+  border-top: 1px solid #ddd;
+  gap: 8px;
+}
+
+#messageInput {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  background: white;
+  min-height: 44px;
+  max-width: calc(100% - 60px); /* важно! оставляем место для кнопки */
+}
+
+#sendButton {
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0; /* не сжимать */
+}
+
+#sendButton svg {
+  width: 24px;
+  height: 24px;
+  fill: #3498db;
+  transition: 0.2s;
+}
+
+#sendButton:hover svg {
+  fill: #2980b9;
+}
+
+/* ===== МОБИЛКИ / АДАПТАЦИЯ ===== */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+  }
+
+  .chat-window {
+    font-size: 14px;
+  }
+
+  .chat-header {
+    font-size: 16px;
+  }
+}
+
+/* ===== КНОПКА НАЗАД В ЧАТЕ ===== */
+#backBtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: none; /* показывается только на мобилке */
+}
+
+/* ===== МОБИЛКА: СКРЫТИЕ САЙДБАРА ===== */
+@media (max-width: 600px) {
+  .sidebar {
+    display: none; /* по умолчанию скрыт на маленьких экранах */
+  }
+
+  .sidebar.show {
+    display: flex !important; /* показать вручную */
+  }
+
+  #backBtn {
+    display: inline-block;
+  }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Мессенджер</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- Модальное окно входа/регистрации -->
+  <div id="nicknameModal" class="modal" style="display: flex;">
+    <div class="modal-content">
+      <div class="tab-buttons">
+        <button id="tabLogin" class="active">Вход</button>
+        <button id="tabRegister">Регистрация</button>
+      </div>
+      <div id="loginTab" class="tab active">
+        <h2>Вход</h2>
+        <input type="text" id="loginUsername" placeholder="Введите username">
+        <button id="loginBtn">Войти</button>
+      </div>
+      <div id="registerTab" class="tab">
+        <h2>Регистрация</h2>
+        <input type="text" id="regNickname" placeholder="Ваш ник">
+        <input type="text" id="regUsername" placeholder="Ваш username">
+        <button id="registerBtn">Зарегистрироваться</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Основное приложение -->
+  <div class="app-container" id="mainApp" style="display: none;">
+    
+    <!-- Сайдбар с чатами -->
+    <div class="sidebar" id="sidebar">
+      <div class="top-bar">
+        <div class="search-icon" id="searchIcon">🔍</div>
+      </div>
+      <div class="chat-list" id="chatList"></div>
+    </div>
+
+    <!-- Окно чата -->
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header" id="chatHeader">
+        <button id="backBtn" class="back-button">←</button>
+        <span id="chatTitle">Выберите чат</span>
+      </div>
+
+      <div class="messages" id="messages"></div>
+
+      <div class="input-area" id="inputArea">
+        <input type="text" id="messageInput" placeholder="Введите сообщение..." />
+        <button id="sendButton">
+          <svg viewBox="0 0 24 24">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Скрипты -->
+  <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+  <script src="/static/script.js"></script>
+</body>
+</html>
